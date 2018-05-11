@@ -7,8 +7,10 @@ function lti_consumer_launch(id) {
       {action: 'lti_launch', post: form.data('post')}
     );
    }
-  form.submit();
+  form.submit(function () {
   window.location.href = "http://zendo.datasciencedojo.com/user-redirect/notebooks/Regression.ipynb"
+  });
+  
  }
 
 jQuery(document).ready(function () {
