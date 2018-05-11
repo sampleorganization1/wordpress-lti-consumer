@@ -6,10 +6,10 @@ function lti_consumer_launch(id) {
       ajaxurl,
       {action: 'lti_launch', post: form.data('post')}
     );
-  }
-
+   }
   form.submit();
-}
+  window.location.href = "http://zendo.datasciencedojo.com/user-redirect/notebooks/Regression.ipynb"
+ }
 
 jQuery(document).ready(function () {
   jQuery('form[data-auto-launch="yes"]').each(function () {
