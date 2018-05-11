@@ -253,10 +253,10 @@ class OAuthRequest {
      * attempt to build up a request from what was passed to the server
      */
     public static function from_request($http_method = null, $http_url = null, $parameters = null) {
-        $scheme = (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") ? 'http' : 'https';
+        $scheme = (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != "on") ? 'http' : 'http';
         $port = "";
         if ($_SERVER['SERVER_PORT'] != "80" && $_SERVER['SERVER_PORT'] != "443" && strpos(':', $_SERVER['HTTP_HOST']) < 0) {
-            $port = ':' . $_SERVER['SERVER_PORT'];
+            $port = ':' . "80";
         }
         @$http_url or $http_url = $scheme .
         '://' . $_SERVER['HTTP_HOST'] .
@@ -404,12 +404,12 @@ class OAuthRequest {
     public function get_normalized_http_url() {
         $parts = parse_url($this->http_url);
 
-        $port = @$parts['port'];
-        $scheme = $parts['scheme'];
+        $port = '80';
+        $scheme = 'http';
         $host = $parts['host'];
         $path = @$parts['path'];
 
-        $port or $port = ($scheme == 'https') ? '443' : '80';
+        $port or $port = ($scheme == 'https') ? '80' : '80';
 
         if (($scheme == 'https' && $port != '443') || ($scheme == 'http' && $port != '80')) {
             $host = "$host:$port";
