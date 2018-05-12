@@ -146,7 +146,7 @@ function sb_lti_content_inner_custom_box($lti_content) {
 
     <tr>
       <th><label for="lti_content_field_custom_next"><?php echo _e( "Return URL after completion", 'lti-consumer' ); ?></label></th>
-      <td><input type="url" id="lti_content_field_custom_next" name="lti_content_field_custom_next" value="<?php echo esc_attr( $custom_next ); ?>" size="35" /></td>
+      <td><input type="text" id="lti_content_field_custom_next" name="lti_content_field_custom_next" value="<?php echo esc_attr( $custom_next ); ?>" size="35" /></td>
     </tr>
 
     <tr>
