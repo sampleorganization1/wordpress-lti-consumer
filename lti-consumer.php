@@ -479,9 +479,9 @@ function sb_lti_launch_process($attrs) {
         }
 
         if ( array_key_exists('return_url', $attrs) ) {
-            $parameters['launch_presentation_return_url'] = $attrs['return_url'];
+            $parameters['custom_next'] = $attrs['return_url'];
         } else if ( isset($return_url) && $return_url ) {
-            $parameters['launch_presentation_return_url'] = $return_url;
+            $parameters['custom_next'] = $return_url;
         }
 
         if ( array_key_exists('version', $attrs) ) {
