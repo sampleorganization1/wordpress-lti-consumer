@@ -88,7 +88,7 @@ function sb_lti_content_inner_custom_box($lti_content) {
     $action = get_post_meta($lti_content->ID, '_lti_meta_action', true);
     $launch_url = get_post_meta($lti_content->ID, '_lti_meta_launch_url', true);
     $configuration_url = get_post_meta($lti_content->ID, '_lti_meta_configuration_url', true);
-    $return_url = get_post_meta($lti_content->ID, '_lti_meta_return_url', true);
+    $custom_next = get_post_meta($lti_content->ID, '_lti_meta_return_url', true);
     $version = get_post_meta($lti_content->ID, '_lti_meta_version', true);
 
     if ( $display === '' ) {
@@ -146,7 +146,7 @@ function sb_lti_content_inner_custom_box($lti_content) {
 
     <tr>
       <th><label for="lti_content_field_return_url"><?php echo _e( "Return URL after completion", 'lti-consumer' ); ?></label></th>
-      <td><input type="url" id="lti_content_field_return_url" name="lti_content_field_return_url" value="<?php echo esc_attr( $return_url ); ?>" size="35" /></td>
+      <td><input type="url" id="lti_content_field_return_url" name="lti_content_field_return_url" value="<?php echo esc_attr( $custom_next ); ?>" size="35" /></td>
     </tr>
 
     <tr>
@@ -208,7 +208,7 @@ function sb_lti_content_save_post($post_id) {
     $action = sanitize_text_field($_POST['lti_content_field_action']);
     $launch_url = esc_url_raw($_POST['lti_content_field_launch_url']);
     $configuration_url = esc_url_raw($_POST['lti_content_field_configuration_url']);
-    $return_url = esc_url_raw($_POST['lti_content_field_return_url']);
+    $custom_next = esc_url_raw($_POST['lti_content_field_return_url']);
     $version = sanitize_text_field($_POST['lti_content_field_version']);
 
     // Update the meta field in the database.
@@ -218,7 +218,7 @@ function sb_lti_content_save_post($post_id) {
     update_post_meta($post_id, '_lti_meta_action', $action);
     update_post_meta($post_id, '_lti_meta_launch_url', $launch_url);
     update_post_meta($post_id, '_lti_meta_configuration_url', $configuration_url);
-    update_post_meta($post_id, '_lti_meta_return_url', $return_url);
+    update_post_meta($post_id, '_lti_meta_return_url', $custom_next);
     update_post_meta($post_id, '_lti_meta_version', $version);
 }
 
