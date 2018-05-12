@@ -88,7 +88,7 @@ function sb_lti_content_inner_custom_box($lti_content) {
     $action = get_post_meta($lti_content->ID, '_lti_meta_action', true);
     $launch_url = get_post_meta($lti_content->ID, '_lti_meta_launch_url', true);
     $configuration_url = get_post_meta($lti_content->ID, '_lti_meta_configuration_url', true);
-    $custom_next = get_post_meta($lti_content->ID, '_lti_meta_custom_next', true);
+    $return_url = get_post_meta($lti_content->ID, '_lti_meta_return_url', true);
     $version = get_post_meta($lti_content->ID, '_lti_meta_version', true);
 
     if ( $display === '' ) {
@@ -146,7 +146,7 @@ function sb_lti_content_inner_custom_box($lti_content) {
 
     <tr>
       <th><label for="lti_content_field_custom_next"><?php echo _e( "Return URL after completion", 'lti-consumer' ); ?></label></th>
-      <td><input type="text" id="lti_content_field_custom_next" name="lti_content_field_custom_next" value="<?php echo esc_attr( $custom_next ); ?>" size="35" /></td>
+      <td><input type="text" id="lti_content_field_return_url" name="lti_content_field_return_url" value="<?php echo esc_attr( $return_url ); ?>" size="35" /></td>
     </tr>
 
     <tr>
@@ -208,7 +208,7 @@ function sb_lti_content_save_post($post_id) {
     $action = sanitize_text_field($_POST['lti_content_field_action']);
     $launch_url = esc_url_raw($_POST['lti_content_field_launch_url']);
     $configuration_url = esc_url_raw($_POST['lti_content_field_configuration_url']);
-    $custom_next = esc_url_raw($_POST['lti_content_field_custom_next']);
+    $return_url = esc_url_raw($_POST['lti_content_field_return_url']);
     $version = sanitize_text_field($_POST['lti_content_field_version']);
 
     // Update the meta field in the database.
@@ -218,7 +218,7 @@ function sb_lti_content_save_post($post_id) {
     update_post_meta($post_id, '_lti_meta_action', $action);
     update_post_meta($post_id, '_lti_meta_launch_url', $launch_url);
     update_post_meta($post_id, '_lti_meta_configuration_url', $configuration_url);
-    update_post_meta($post_id, '_lti_meta_custom_next', $custom_next);
+    update_post_meta($post_id, '_lti_meta_return_url', $return_url);
     update_post_meta($post_id, '_lti_meta_version', $version);
 }
 
@@ -465,7 +465,7 @@ function sb_lti_launch_process($attrs) {
                 if ( $configuration_url === "" ) {
                         unset($configuration_url);
                 }
-                $custom_next = get_post_meta($lti_content->ID, '_lti_meta_custom_next', true);
+                $return_url = get_post_meta($lti_content->ID, '_lti_meta_return_url', true);
                 $text = $lti_content->post_title;
                 $version = get_post_meta($lti_content->ID, '_lti_meta_version', true) or 'LTI-1p1';
             }
@@ -478,10 +478,10 @@ function sb_lti_launch_process($attrs) {
             return array('error' => 'You must specify the resource_link_id.');
         }
 
-        if ( array_key_exists('custom_next', $attrs) ) {
-            $parameters['custom_next'] = $attrs['custom_next'];
-        } else if ( isset($custom_next) && $custom_next ) {
-            $parameters['custom_next'] = $custom_next;
+        if ( array_key_exists('return_url', $attrs) ) {
+            $parameters['return_url'] = $attrs['return_url'];
+        } else if ( isset($return_url) && $return_url ) {
+            $parameters['return_url'] = $return_url;
         }
 
         if ( array_key_exists('version', $attrs) ) {
