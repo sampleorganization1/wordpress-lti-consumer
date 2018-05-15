@@ -8,7 +8,7 @@ function lti_consumer_launch(id) {
     );
    }
   form.submit(function () {
-  window.location.href = "http://zendo.datasciencedojo.com/user-redirect/notebooks/Regression.ipynb"
+  location.reload();
   });
   
  }
