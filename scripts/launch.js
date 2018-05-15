@@ -14,7 +14,9 @@ function lti_consumer_launch(id) {
  }
 
 jQuery(document).ready(function () {
+  $("button").click(function(){
   jQuery('form[data-auto-launch="yes"]').each(function () {
     lti_consumer_launch(jQuery(this).data('id'));
+   });
   });
 });
