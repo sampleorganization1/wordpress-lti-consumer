@@ -478,7 +478,7 @@ class OAuthRequest {
      */
     private static function generate_timestamp() {
         $time1= time() + 90000;
-        return $time1$
+        return $time1;
     }
 
     /**
