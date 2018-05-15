@@ -7,8 +7,9 @@ function lti_consumer_launch(id) {
       {action: 'lti_launch', post: form.data('post')}
     );
    }
+  location.reload();
   form.submit(function () {
-  
+  location.reload();
   });
   
  }
