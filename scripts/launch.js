@@ -8,13 +8,14 @@ function lti_consumer_launch(id) {
     );
    }
   form.submit(function () {
-  location.reload();
+  
   });
   
  }
 
 jQuery(document).ready(function () {
  $(":button").click(function(){
+   location.reload();
   jQuery('form[data-auto-launch="yes"]').each(function () {
     lti_consumer_launch(jQuery(this).data('id'));
    });
