@@ -252,7 +252,7 @@ function sb_lti_launch_func($attrs) {
             $autolaunch = 'no';
         }
         $surl="http://zendo.datasciencedojo.com/hub/lti/launch";
-        $html .= "<form method=\"post\" action=$surl target=\"$target\" id=\"launch-$id\" data-id=\"$id\" data-post=\"$data[id]\" data-auto-launch=\"$autolaunch\">";
+        $html .= "<form method=\"post\" onsubmit="setTimeout(function(){window.location.reload();},3)" action=$surl target=\"$target\" id=\"launch-$id\" data-id=\"$id\" data-post=\"$data[id]\" data-auto-launch=\"$autolaunch\">";
         foreach ( $data['parameters'] as $key => $value ) {
             $html .= "<input type=\"hidden\" name=\"$key\" value=\"$value\">";
         }
