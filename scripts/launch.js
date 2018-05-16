@@ -5,12 +5,12 @@ function lti_consumer_launch(id) {
     jQuery.post(
       ajaxurl,
       {action: 'lti_launch', post: form.data('post')}
-      window.location.reload();
+    
     );
   }
 
   form.submit();
-  window.location.reload();
+    window.location.reload();
 }
 
 jQuery(document).ready(function () {
