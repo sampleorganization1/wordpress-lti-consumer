@@ -12,7 +12,7 @@ function lti_consumer_launch(id) {
 }
 
 jQuery(document).ready(function () {
-   $('form#launch-' + id).click(function(){
+   form('form#launch-' + id).click(function(){
   jQuery('form[data-auto-launch="yes"]').each(function () {
     
     lti_consumer_launch(jQuery(this).data('id'));
