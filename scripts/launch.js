@@ -16,6 +16,7 @@ location.reload();
 jQuery(document).ready(function () {
   
   jQuery('form[data-auto-launch="yes"]').each(function () {
+    location.reload();
     lti_consumer_launch(jQuery(this).data('id'));
   });
 });
