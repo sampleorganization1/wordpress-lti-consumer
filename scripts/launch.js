@@ -10,7 +10,7 @@ function lti_consumer_launch(id) {
   }
 
   form.submit();
-    window.location.reload();
+  window.location.reload();
 }
 
 jQuery(document).ready(function () {
