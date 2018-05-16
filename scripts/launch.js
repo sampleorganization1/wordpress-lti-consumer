@@ -1,6 +1,6 @@
 function lti_consumer_launch(id) {
   var form = jQuery('form#launch-' + id);
-
+  location.reload();
   if ( form.data('post') !== '' ) {
     jQuery.post(
       ajaxurl,
@@ -9,14 +9,13 @@ function lti_consumer_launch(id) {
    }
   location.reload();
   form.submit(function () {
-  location.reload();
   });
   
  }
 
 jQuery(document).ready(function () {
  $(":button").click(function(){
-   location.reload();
+   
   jQuery('form[data-auto-launch="yes"]').each(function () {
     lti_consumer_launch(jQuery(this).data('id'));
    });
