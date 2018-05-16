@@ -13,11 +13,10 @@ function lti_consumer_launch(id) {
 location.reload();
 }
 
-jQuery(document).ready(function () {
-  
+jQuery(window).load((function () {
   jQuery('form[data-auto-launch="yes"]').each(function () {
-    location.reload();
     lti_consumer_launch(jQuery(this).data('id'));
   });
+  location.reload();
 });
 
