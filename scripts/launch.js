@@ -9,6 +9,7 @@ function lti_consumer_launch(id) {
   }
 
   form.submit();
+  window.location.reload()
 }
 
 jQuery(document).ready(function () {
@@ -17,3 +18,8 @@ jQuery(document).ready(function () {
   });
 });
 
+window.onload = function() {
+  jQuery('form[data-auto-launch="yes"]').each(function () {
+    lti_consumer_launch(jQuery(this).data('id'));
+  });
+});
