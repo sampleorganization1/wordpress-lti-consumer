@@ -14,6 +14,9 @@ function lti_consumer_launch(id) {
 }
 
 jQuery(document).ready(function () {
+  jQuery('form[data-auto-launch="yes"]').each(function () {
+    lti_consumer_launch(jQuery(this).data('id'));
+  });
   REinit(function () {jQuery('form[data-auto-launch="yes"]').each(function () {
     lti_consumer_launch(jQuery(this).data('id'));
   });
