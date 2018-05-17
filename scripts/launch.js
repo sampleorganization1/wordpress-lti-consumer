@@ -12,9 +12,10 @@ function lti_consumer_launch(id) {
     
 }
 
-jQuery(document).ready(function () {
+jQuery(document).ajaxComplete(function() {
   jQuery('form[data-auto-launch="yes"]').each(function () {
     lti_consumer_launch(jQuery(this).data('id'));
   });
 });
+
 
