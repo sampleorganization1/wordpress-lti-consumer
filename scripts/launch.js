@@ -9,10 +9,7 @@ function lti_consumer_launch(id) {
   }
 
   form.submit();
-  setTimeout(function(){
-    jQuery.ready();
-}, 3);
-  
+    
 }
 
 jQuery(document).ready(function () {
