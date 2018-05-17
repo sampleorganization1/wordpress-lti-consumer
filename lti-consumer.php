@@ -560,7 +560,7 @@ function sb_lti_launch_process($attrs) {
 }
 function display()
 {
-     sb_lti_launch_process($attrs);
+     sb_lti_launch_func($attrs);
 }
 if(isset($_POST['submit']))
 {
