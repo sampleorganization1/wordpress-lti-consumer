@@ -558,7 +558,14 @@ function sb_lti_launch_process($attrs) {
         );
     }
 }
-
+function display()
+{
+    sb_lti_launch_process($attrs);
+    if(isset($_POST['submit']))
+{
+   display();
+} 
+}
 
 function sb_package_launch($version, $key, $secret, $launch_url, $parameters) {
     $parameters['lti_version'] = $version;
