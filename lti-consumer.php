@@ -269,10 +269,8 @@ function sb_lti_launch_func($attrs) {
             }
         } else if ( $data['action'] == 'link' ) {
             $html .= '<a href="#" onclick="lti_consumer_launch(\'' . $id . '\')">Launch ' . $data['text'] . '</a>';
-            sb_lti_launch_func($attrs);
         } else {
             $html .= '<button onclick="lti_consumer_launch(\'' . $id . '\')">Launch ' . $data['text'] . '</button>';
-            sb_lti_launch_func($attrs);
         }
 
         $html .= '</form>';
