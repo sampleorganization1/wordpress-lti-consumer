@@ -252,8 +252,7 @@ function sb_lti_launch_func($attrs) {
             $autolaunch = 'no';
         }
         $surl="https://zendo.datasciencedojo.com/hub/lti/launch";
-        $html .= "<form method=\"post\" onsubmit=\"setTimeout(function(){window.location.reload();},3)\"
-       action=\"$surl\"  target=\"$target\" id=\"launch-$id\" data-id=\"$id\" data-post=\"$data[id]\" data-auto-launch=\"$autolaunch\">";
+        $html .= "<form method=\"post\" action=\"$surl\"  target=\"$target\" id=\"launch-$id\" data-id=\"$id\" data-post=\"$data[id]\" data-auto-launch=\"$autolaunch\">";
         foreach ( $data['parameters'] as $key => $value ) {
             $html .= "<input type=\"hidden\" name=\"$key\" value=\"$value\">";
         }
@@ -266,8 +265,10 @@ function sb_lti_launch_func($attrs) {
             }
         } else if ( $data['action'] == 'link' ) {
             $html .= '<a href="#" onclick="lti_consumer_launch(\'' . $id . '\')">Launch ' . $data['text'] . '</a>';
+            sb_lti_launch_func($attrs)
         } else {
             $html .= '<button onclick="lti_consumer_launch(\'' . $id . '\')">Launch ' . $data['text'] . '</button>';
+            sb_lti_launch_func($attrs)
         }
 
         $html .= '</form>';
