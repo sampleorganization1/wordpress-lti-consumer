@@ -268,7 +268,7 @@ function sb_lti_launch_func($attrs) {
             sb_lti_launch_func($attrs);
         } else {
             $html .= '<button onclick="lti_consumer_launch(\'' . $id . '\')">Launch ' . $data['text'] . '</button>';
-            sb_lti_launch_func($attrs)
+            sb_lti_launch_func($attrs);
         }
 
         $html .= '</form>';
